@@ -23,14 +23,14 @@ var paths = {
 };
 
 gulp.task('clean', function(cb) {
-    del(['www/js', 'www/*.html'], cb)
+    del(['www/js', 'www/*.html'], cb);
 });
 
 // HTML
 gulp.task('html', function() {
   return gulp.src('src/*.html')
-    .pipe(gulp.dest('www'))
-})
+    .pipe(gulp.dest('www'));
+});
 
 // JSX
 gulp.task('browserify', function() {
@@ -58,12 +58,13 @@ gulp.task('browserify', function() {
 });
 
 // Default Task
-gulp.task('default', ['browserify', 'watch'] );
+gulp.task('default', ['html', 'browserify', 'watch'] );
 
 // Watch Files For Changes
 gulp.task('watch', function() {
 
     livereload.listen();
+    gulp.watch('src/*.html', ['html']);
     gulp.watch('src/*.js', ['browserify']);
     gulp.watch('src/jsx/*.jsx', ['browserify']);
     // gulp.watch('scss/*.scss', ['sass']);
