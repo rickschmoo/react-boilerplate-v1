@@ -4,6 +4,7 @@ var gutil = require('gulp-util');
 var rename = require('gulp-rename');
 var del = require('del');
 var livereload = require('gulp-livereload');
+var connect = require('gulp-connect');
 // var jshint = require('gulp-jshint');
 
 var paths = {
@@ -22,6 +23,14 @@ var paths = {
   npm: './node_modules'
 };
 
+gulp.task('webserver', function() {
+  connect.server({
+    root: 'www',
+    livereload: true,
+    port: '8000'
+  });
+});
+
 gulp.task('clean', function(cb) {
     del(['www/js', 'www/*.html'], cb);
 });
@@ -29,7 +38,8 @@ gulp.task('clean', function(cb) {
 // HTML
 gulp.task('html', function() {
   return gulp.src('src/*.html')
-    .pipe(gulp.dest('www'));
+    .pipe(gulp.dest('www'))
+    .pipe(connect.reload());
 });
 
 // JSX
@@ -54,11 +64,13 @@ gulp.task('browserify', function() {
     .pipe(rename('bundle.js'))
 
     // Output to the build directory
-    .pipe(gulp.dest('www/js/'));
+    .pipe(gulp.dest('www/js/'))
+
+    .pipe(connect.reload());
 });
 
 // Default Task
-gulp.task('default', ['html', 'browserify', 'watch'] );
+gulp.task('default', ['html', 'browserify', 'watch', 'webserver'] );
 
 // Watch Files For Changes
 gulp.task('watch', function() {
@@ -69,7 +81,7 @@ gulp.task('watch', function() {
     gulp.watch('src/jsx/*.jsx', ['browserify']);
     // gulp.watch('scss/*.scss', ['sass']);
 
-     gulp.watch(['www/**']).on('change', livereload.changed);
+    gulp.watch(['www/**']).on('change', livereload.changed);
 });
 
 // // Lint Task

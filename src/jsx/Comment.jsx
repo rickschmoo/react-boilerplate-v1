@@ -1,10 +1,11 @@
+/** @jsx React.DOM */
 var React = require('react');
 
 var Comment = React.createClass({
   render: function() {
     return (
       <div className="Comment">
-        Commentyyyyx {this.props.name}
+        Commentyybooxxrreeeeeeerxyyx {this.props.name}
       </div>
     );
   }
