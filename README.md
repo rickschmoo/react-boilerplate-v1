@@ -1,4 +1,6 @@
-README
+react-boilerplate-v1
+
+React + browserify/reactify + gulp + git = this
 
 ```
 > gulp browserify
