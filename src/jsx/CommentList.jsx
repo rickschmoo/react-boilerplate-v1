@@ -8,7 +8,7 @@ var CommentList = React.createClass({
         I am a CommentListt.
         <Comment name="Emily"/>
         <Comment name="Hundi"/>
-        <Comment name="Boox"/>
+        <Comment name="Booxss"/>
       </div>
     );
   }

@@ -8,9 +8,9 @@ var CommentBox = React.createClass({
   render: function() {
     return (
       <div className="commentBox">
-        Hello, world! I am a CommentBoxxy.
+        Hello, world lrrrrrrrickrs! I am a CommentBoxsxxsy.
         <CommentList/>
-      </div>
+      </div> 
     );
   }
 });

@@ -4,7 +4,7 @@ var Comment = React.createClass({
   render: function() {
     return (
       <div className="Comment">
-        Comment {this.props.name}
+        Commentyyyyx {this.props.name}
       </div>
     );
   }
